@@ -26,7 +26,6 @@ modules:
         - micro
         - starship
         - emacs
-        - code
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
