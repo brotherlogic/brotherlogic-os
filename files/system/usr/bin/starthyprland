@@ -8,4 +8,4 @@ set -oue pipefail
 
 default_conf="/usr/share/hyprland/hyprland.conf"
 
-hyprland -c "$default_conf"
+Hyprland -c "$default_conf"
