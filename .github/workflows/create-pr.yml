@@ -1,0 +1,29 @@
+name: Create PR on Push
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # The gh CLI is pre-installed on GitHub-hosted runners
+          gh pr create \
+            --base main \
+            --head ${{ github.ref_name }} \
+            --title "Merge ${{ github.ref_name }} into main" \
+            --body "Automated PR created upon push to \`${{ github.ref_name }}\` branch." || \
+            echo "PR already exists or there was an error."
