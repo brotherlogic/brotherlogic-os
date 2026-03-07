@@ -29,6 +29,7 @@ modules:
         - emacs
         - devpod
         - podman
+        - hyprland
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
