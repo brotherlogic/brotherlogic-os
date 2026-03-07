@@ -47,7 +47,7 @@ modules:
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
   - type: rpm-ostree
+    repos:
+      -  antigravity.repo
     install:
-      - docker-ce
-      - docker-ce-cli
-      - containerd.io
+      - antigravity
