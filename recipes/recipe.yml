@@ -12,13 +12,12 @@ image-version: 42 # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-
-
   - type: dnf
     repos:
       copr:
         - atim/starship
         - chronoscrat/devpod
+        - a-zhn/ghostty
     install:
       packages:
         - micro
@@ -27,6 +26,7 @@ modules:
         - devpod
         - podman
         - hyprland
+        - ghostty
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
