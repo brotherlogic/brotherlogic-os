@@ -27,6 +27,7 @@ modules:
         - podman
         - hyprland
         - ghostty
+        - gh
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
