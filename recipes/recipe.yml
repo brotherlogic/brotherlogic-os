@@ -28,6 +28,7 @@ modules:
         - hyprland
         - ghostty
         - gh
+        - cdparanoia
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
