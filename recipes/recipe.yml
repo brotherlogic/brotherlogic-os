@@ -30,6 +30,7 @@ modules:
         - gh
         - cdparanoia
         - docker
+        - golang
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
