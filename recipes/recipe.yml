@@ -57,6 +57,11 @@ modules:
     install:
       - antigravity
 
+  - type: script
+    snippets:
+      - "curl -Lo /usr/bin/talosctl https://github.com/siderolabs/talos/releases/latest/download/talosctl-linux-amd64"
+      - "chmod +x /usr/bin/talosctl"
+
   - type: files
     files:
       - source: system
