@@ -24,9 +24,8 @@ modules:
         - starship
         - emacs
         - devpod
-        - podman
         - hyprland
-        - hyprpaper
+        - swaybg
         - ghostty
         - gh
         - cdparanoia
