@@ -61,6 +61,10 @@ modules:
     snippets:
       - "curl -Lo /usr/bin/talosctl https://github.com/siderolabs/talos/releases/latest/download/talosctl-linux-amd64"
       - "chmod +x /usr/bin/talosctl"
+      - "git clone https://github.com/brotherlogic/devcontainer-manager.git /tmp/devcontainer-manager"
+      - "cd /tmp/devcontainer-manager && go build -o /usr/bin/devcontainer-manager main.go"
+      - "sed 's|%h/.local/bin/devcontainer-manager|/usr/bin/devcontainer-manager|g' /tmp/devcontainer-manager/service-file > /usr/lib/systemd/user/devcontainer-manager.service"
+      - "systemctl --global enable devcontainer-manager.service"
 
   - type: files
     files:
