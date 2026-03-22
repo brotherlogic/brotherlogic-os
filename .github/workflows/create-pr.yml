@@ -18,7 +18,7 @@ jobs:
       
       - name: Create Pull Request
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         run: |
           # The gh CLI is pre-installed on GitHub-hosted runners
           gh pr create \

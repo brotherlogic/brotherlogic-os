@@ -1,0 +1,9 @@
+You must ALWAYS automatically commit and push any changes you make to this repository to a new branch on GitHub immediately after completing your modifications.
+
+After modifying files:
+1. Run `git status` and `git diff` to verify contents.
+2. Run `git checkout -b <descriptive-branch-name>`
+3. Run `git add .`
+4. Run `git commit -m "<Description of changes>"`
+5. Run `git push -u origin <descriptive-branch-name>`
+6. Provide the GitHub pull request link to the user.
