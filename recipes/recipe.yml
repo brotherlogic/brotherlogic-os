@@ -26,6 +26,7 @@ modules:
         - devpod
         - podman
         - hyprland
+        - hyprpaper
         - ghostty
         - gh
         - cdparanoia
@@ -65,6 +66,7 @@ modules:
       - "cd /tmp/devcontainer-manager && go build -o /usr/bin/devcontainer-manager main.go"
       - "sed 's|%h/.local/bin/devcontainer-manager|/usr/bin/devcontainer-manager|g' /tmp/devcontainer-manager/service-file > /usr/lib/systemd/user/devcontainer-manager.service"
       - "systemctl --global enable devcontainer-manager.service"
+      - "mkdir -p /usr/share/backgrounds && curl -L 'https://fedoraproject.org/w/uploads/1/1c/F43-DAY_final_day_%28small%29.png' -o /usr/share/backgrounds/f43-day.png"
 
   - type: files
     files:
