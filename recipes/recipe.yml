@@ -18,6 +18,7 @@ modules:
         - atim/starship
         - chronoscrat/devpod
         - a-zhn/ghostty
+        - solopasha/hyprland
     install:
       packages:
         - micro
