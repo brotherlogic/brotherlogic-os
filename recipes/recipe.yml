@@ -32,6 +32,8 @@ modules:
         - cdparanoia
         - docker
         - golang
+        - nodejs
+        - npm
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -64,9 +66,10 @@ modules:
       - "chmod +x /usr/bin/talosctl"
       - "git clone https://github.com/brotherlogic/devcontainer-manager.git /tmp/devcontainer-manager"
       - "cd /tmp/devcontainer-manager && go build -o /usr/bin/devcontainer-manager main.go"
-      - "sed 's|%h/.local/bin/devcontainer-manager|/usr/bin/devcontainer-manager|g' /tmp/devcontainer-manager/service-file > /usr/lib/systemd/user/devcontainer-manager.service"
+      - "sed -e '/ExecStartPre/d' -e 's|%h/.local/bin/devcontainer-manager|/usr/bin/devcontainer-manager|g' /tmp/devcontainer-manager/service-file > /usr/lib/systemd/user/devcontainer-manager.service"
       - "systemctl --global enable devcontainer-manager.service"
       - "mkdir -p /usr/share/backgrounds && curl -L 'https://fedoraproject.org/w/uploads/1/1c/F43-DAY_final_day_%28small%29.png' -o /usr/share/backgrounds/f43-day.png"
+      - "npm install -g @google/gemini-cli"
 
   - type: files
     files:
