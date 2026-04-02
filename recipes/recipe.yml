@@ -34,6 +34,9 @@ modules:
         - golang
         - nodejs
         - npm
+        - waybar
+        - fontawesome-fonts
+        - unzip
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -71,6 +74,7 @@ modules:
       - "sed -e 's/\\\\|/|/g' -e 's|%PROJECT_DIR%|%h/devcontainer-manager|g' -e 's|%GO_CMD%|/usr/bin/go|g' /tmp/devcontainer-manager/service-file > /usr/lib/systemd/user/devcontainer-manager.service"
       - "systemctl --global enable devcontainer-manager.service"
       - "mkdir -p /usr/share/backgrounds && curl -L 'https://fedoraproject.org/w/uploads/1/1c/F43-DAY_final_day_%28small%29.png' -o /usr/share/backgrounds/f43-day.png"
+      - "mkdir -p /usr/share/fonts/jost && curl -L https://github.com/indestructible-type/Jost/releases/download/3.5/Jost.zip -o /tmp/jost.zip && unzip -o /tmp/jost.zip -d /usr/share/fonts/jost && fc-cache -f /usr/share/fonts/jost"
       - "npm install -g @google/gemini-cli"
 
   - type: files
