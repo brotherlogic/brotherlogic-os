@@ -3,9 +3,16 @@
     "position": "top",
     "height": 30,
     "spacing": 4,
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": ["network", "battery"],
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "network",
+        "battery"
+    ],
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -14,7 +21,7 @@
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}",
-        "format": " {:%H:%M:%S} "
+        "format": " {:%H:%M} "
     },
     "network": {
         "format-wifi": " {essid} ({signalStrength}%)",
@@ -33,6 +40,12 @@
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     }
 }
