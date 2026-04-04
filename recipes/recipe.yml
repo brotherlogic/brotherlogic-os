@@ -37,6 +37,7 @@ modules:
         - waybar
         - fontawesome-fonts
         - unzip
+        - rpi-imager
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
