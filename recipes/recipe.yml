@@ -64,6 +64,9 @@ modules:
     snippets:
       - "curl -Lo /usr/bin/talosctl https://github.com/siderolabs/talos/releases/latest/download/talosctl-linux-amd64"
       - "chmod +x /usr/bin/talosctl"
+      - "gh extension install dlvhdr/gh-dash"
+      - "mkdir -p /etc/skel/.local/share/gh/extensions/gh-dash"
+      - "cp -rp /root/.local/share/gh/extensions/gh-dash/* /etc/skel/.local/share/gh/extensions/gh-dash/"
       - "git clone https://github.com/brotherlogic/devcontainer-manager.git /tmp/devcontainer-manager"
       - "cd /tmp/devcontainer-manager && go build -o /usr/bin/devcontainer-manager main.go"
       - "sed -e '/ExecStartPre/d' -e 's|%h/.local/bin/devcontainer-manager|/usr/bin/devcontainer-manager|g' /tmp/devcontainer-manager/service-file > /usr/lib/systemd/user/devcontainer-manager.service"
