@@ -73,6 +73,7 @@ modules:
       - "systemctl --global enable devcontainer-manager.service"
       - "mkdir -p /usr/share/backgrounds && curl -L 'https://fedoraproject.org/w/uploads/1/1c/F43-DAY_final_day_%28small%29.png' -o /usr/share/backgrounds/f43-day.png"
       - "npm install -g @google/gemini-cli"
+      - "usermod -aG disk simon"
 
   - type: files
     files:
