@@ -78,7 +78,7 @@ modules:
       - "mkdir -p /usr/share/fonts/jost && curl -L https://github.com/indestructible-type/Jost/releases/download/3.5/Jost.zip -o /tmp/jost.zip && unzip -o /tmp/jost.zip -d /usr/share/fonts/jost && fc-cache -f /usr/share/fonts/jost"
       - "npm install -g @google/gemini-cli"
       - "git clone https://github.com/dlvhdr/gh-dash /tmp/gh-dash"
-      - "gh extension install /tmp/gh-dash"
+      - "GH_TOKEN=anything gh extension install /tmp/gh-dash"
       - "rm -rf /tmp/gh-dash"
 
   - type: files
