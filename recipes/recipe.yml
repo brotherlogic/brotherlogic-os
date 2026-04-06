@@ -70,6 +70,9 @@ modules:
     snippets:
       - "curl -Lo /usr/bin/talosctl https://github.com/siderolabs/talos/releases/latest/download/talosctl-linux-amd64"
       - "chmod +x /usr/bin/talosctl"
+      - "gh extension install dlvhdr/gh-dash"
+      - "mkdir -p /etc/skel/.local/share/gh/extensions/gh-dash"
+      - "cp -rp /root/.local/share/gh/extensions/gh-dash/* /etc/skel/.local/share/gh/extensions/gh-dash/"
       - "git clone https://github.com/brotherlogic/devcontainer-manager.git /tmp/devcontainer-manager"
       - "cd /tmp/devcontainer-manager && go build -o /usr/bin/devcontainer-manager main.go"
       - "sed -e 's/\\\\|/|/g' -e 's|%PROJECT_DIR%|%h/devcontainer-manager|g' -e 's|%GO_CMD%|/usr/bin/go|g' /tmp/devcontainer-manager/service-file > /usr/lib/systemd/user/devcontainer-manager.service"
@@ -77,6 +80,7 @@ modules:
       - "mkdir -p /usr/share/backgrounds && curl -L 'https://fedoraproject.org/w/uploads/1/1c/F43-DAY_final_day_%28small%29.png' -o /usr/share/backgrounds/f43-day.png"
       - "mkdir -p /usr/share/fonts/jost && curl -L https://github.com/indestructible-type/Jost/releases/download/3.5/Jost.zip -o /tmp/jost.zip && unzip -o /tmp/jost.zip -d /usr/share/fonts/jost && fc-cache -f /usr/share/fonts/jost"
       - "npm install -g @google/gemini-cli"
+      - "usermod -aG disk simon"
 
   - type: files
     files:
