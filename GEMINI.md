@@ -23,4 +23,4 @@ This workflow is defined in [.agents/workflows/finish.md](file:///.agents/workfl
 6.  **Report**: provide the GitHub Pull Request creation link to the user.
 
 > [!IMPORTANT]
-> Always use a new branch for changes unless specifically instructed otherwise.
+> Always use a new branch for changes unless we're already on a non-main branch
