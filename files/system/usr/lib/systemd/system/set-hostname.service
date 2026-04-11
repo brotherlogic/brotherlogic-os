@@ -1,0 +1,11 @@
+[Unit]
+Description=Set hostname based on chassis type
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/set-hostname.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

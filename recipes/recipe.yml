@@ -12,6 +12,7 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
+
   - type: dnf
     repos:
       copr:
@@ -69,6 +70,11 @@ modules:
       - antigravity
       - code
 
+  - type: files
+    files:
+      - source: system
+        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+
   - type: script
     snippets:
       - "echo '--- Installing talosctl binary ---' && curl -Lo /usr/bin/talosctl https://github.com/siderolabs/talos/releases/latest/download/talosctl-linux-amd64 && chmod +x /usr/bin/talosctl"
@@ -77,8 +83,6 @@ modules:
       - "mkdir -p /usr/share/backgrounds && curl -L 'https://fedoraproject.org/w/uploads/1/1c/F43-DAY_final_day_%28small%29.png' -o /usr/share/backgrounds/f43-day.png"
       - "mkdir -p /usr/share/fonts/jost && curl -L https://github.com/indestructible-type/Jost/releases/download/3.5/Jost.zip -o /tmp/jost.zip && unzip -o /tmp/jost.zip -d /usr/share/fonts/jost && fc-cache -f /usr/share/fonts/jost"
       - "npm install -g @google/gemini-cli"
-   
-  - type: files
-    files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+      - "chmod +x /usr/bin/set-hostname.sh"
+      - "systemctl enable set-hostname.service"
+ 
