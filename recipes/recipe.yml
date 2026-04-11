@@ -27,6 +27,7 @@ modules:
         - emacs
         - devpod
         - hyprland
+        - hyprland-qtutils
         - swaybg
         - ghostty
         - gh
