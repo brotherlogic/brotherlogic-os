@@ -19,6 +19,7 @@ modules:
         - chronoscrat/devpod
         - a-zhn/ghostty
         - solopasha/hyprland
+        - erikreider/SwayNotificationCenter
     install:
       packages:
         - micro
@@ -38,6 +39,7 @@ modules:
         - fontawesome-fonts
         - unzip
         - rpi-imager
+        - SwayNotificationCenter
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)

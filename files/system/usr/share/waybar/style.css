@@ -75,3 +75,11 @@ window#waybar {
 #network.disconnected {
     background-color: #f53c3c;
 }
+
+#custom-notification {
+    background-color: #008080; /* Teal to match other modules */
+    color: #F5F5DC;
+    padding: 0 15px;
+    margin: 5px;
+    border-radius: 15px;
+}

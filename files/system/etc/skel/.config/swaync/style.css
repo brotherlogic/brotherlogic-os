@@ -1,0 +1,147 @@
+/* SwayNC Style Sheet */
+
+@define-color bg rgba(30, 30, 46, 0.9);
+@define-color fg #F5F5DC;
+@define-color teal #008080;
+@define-color mustard #E1AD01;
+@define-color orange #D2691E;
+@define-color red #f53c3c;
+
+* {
+  font-family: "Jost", "Font Awesome 6 Free", sans-serif;
+  font-size: 14px;
+}
+
+.control-center {
+  background: @bg;
+  color: @fg;
+  border: 2px solid @teal;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+.control-center-list-placeholder {
+  opacity: 0.5;
+}
+
+.notification {
+  background: rgba(0, 128, 128, 0.1);
+  border: 1px solid @teal;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.notification-content {
+  background: transparent;
+  padding: 5px;
+}
+
+.notification-default-action:hover {
+  background: rgba(0, 128, 128, 0.2);
+}
+
+.notification-title {
+  color: @mustard;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.notification-body {
+  color: @fg;
+}
+
+.notification-time {
+  color: @fg;
+  opacity: 0.6;
+}
+
+/* Close button */
+.notification-close-button {
+  background: @red;
+  color: white;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+/* Widgets */
+.widget-title {
+  color: @orange;
+  font-size: 20px;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.widget-title > button {
+  background: @teal;
+  color: @fg;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.widget-title > button:hover {
+  background: @mustard;
+  color: #1E1E2E;
+}
+
+.widget-dnd {
+  margin: 10px;
+  padding: 5px;
+  background: rgba(225, 173, 1, 0.1);
+  border-radius: 10px;
+}
+
+.widget-dnd > switch {
+  background: @teal;
+  border-radius: 15px;
+}
+
+.widget-mpris {
+  background: rgba(210, 105, 30, 0.1);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.widget-mpris-player {
+  padding: 5px;
+}
+
+.widget-mpris-title {
+  font-weight: bold;
+  color: @mustard;
+}
+
+.widget-mpris-subtitle {
+  color: @fg;
+}
+
+/* Volume and Backlight Widgets */
+.widget-volume, .widget-backlight {
+  background: rgba(0, 128, 128, 0.1);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+scale {
+  background: rgba(245, 245, 220, 0.1);
+  border-radius: 10px;
+}
+
+scale trough highlight {
+  background: @teal;
+  border-radius: 10px;
+}
+
+scale slider {
+  background: @mustard;
+  border-radius: 50%;
+  min-width: 15px;
+  min-height: 15px;
+}
