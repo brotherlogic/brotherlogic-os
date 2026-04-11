@@ -1,26 +1,29 @@
-# Gemini Agent Instructions
+# Brotherlogic OS
 
-Welcome, Agent. To maintain the integrity and workflow of the `brotherlogic-os` repository, please adhere to the following guidelines when making modifications.
+This project is a custom Fedora-based atomic OS image built using [BlueBuild](https://blue-build.org). It is based on [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/) and customized for personal use.
 
-## 🛠 Making Changes
+## Project Structure
 
-1.  **Research & Plan**: Always research the existing configuration (located in `recipes/` and `files/`) before making changes.
-2.  **Implementation**: After obtaining approval, implement your changes using the appropriate tools.
-3.  **Verification**: Verify your changes where possible by checking syntax or confirming file paths.
+- **`recipes/recipe.yml`**: The main configuration file for the OS image. Defines the base image, packages, modules, and custom script snippets.
+- **`files/system/`**: Contains configuration files and assets that are copied into the root filesystem of the image.
+- **`modules/`**: Placeholder for custom BlueBuild modules.
+- **`.agents/workflows/`**: Contains workflows for AI assistants (like this one).
 
-## 🚀 Completing the Task
+## Modern BlueBuild Standards
 
-Once your modifications are complete, you **MUST** follow the `/finish` workflow to commit and push your changes.
+- **Declarative Configuration**: Prefer using built-in BlueBuild modules (`dnf`, `rpm-ostree`, `flatpaks`) over raw script snippets whenever possible.
+- **System-Wide Defaults**: When adding tools or configurations, ensure they are placed in system directories (`/usr/bin`, `/etc/skel`, `/usr/share`) to be available across the image.
+- **Immutable Root**: Remember that the root filesystem is read-only. Persistent user data belongs in `/var/home`.
 
-### The `/finish` Workflow
-This workflow is defined in [.agents/workflows/finish.md](file:///.agents/workflows/finish.md) and should be executed using terminal commands:
+## AI Assistant Guidelines
 
-1.  **Verify**: Check changes with `git status` and `git diff`.
-2.  **Branch**: Create a new branch if on `main`: `git checkout -b <descriptive-name>`.
-3.  **Stage**: Add your changes: `git add <files>`.
-4.  **Commit**: Use a clear commit message: `git commit -m "<Description>"`.
-5.  **Push**: Push to origin: `git push -u origin <branch-name>`.
-6.  **Report**: provide the GitHub Pull Request creation link to the user.
-
+### The Finish Command
 > [!IMPORTANT]
-> Always use a new branch for changes unless we're already on a non-main branch
+> Whenever you make modifications to files in this repository, you **MUST** follow the [.agents/workflows/finish.md](file:///.agents/workflows/finish.md) workflow.
+> This involves:
+> 1. Verifying changes with `git status` and `git diff`.
+> 2. Creating a new descriptive branch.
+> 3. Committing and pushing the changes.
+> 4. Providing the PR link to the user.
+
+Always call the `/finish` command (or follow its steps) after completing any task that modifies the codebase.
