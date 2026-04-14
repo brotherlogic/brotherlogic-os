@@ -44,6 +44,7 @@ modules:
         - SwayNotificationCenter
         - chezmoi
         - age
+        - powertop
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
