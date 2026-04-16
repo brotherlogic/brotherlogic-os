@@ -9,11 +9,9 @@ if [ "$CHASSIS" == "laptop" ]; then
     echo "Detected laptop, setting hostname to rst"
     hostnamectl set-hostname rst
     
-    # Optmize battery drain for Framework 13 AMD
-    # nvme.noacpi=1: fixes WD SN770 sleep drain
-    # rtc_cmos.use_acpi_alarm=1: helps with AMD sleep stability
-    echo "Applying laptop power optimizations..."
-    rpm-ostree kargs --append-if-missing="nvme.noacpi=1" --append-if-missing="rtc_cmos.use_acpi_alarm=1"
+    # Cleanup previous battery optimizations that caused wake issues on Framework 13 AMD
+    echo "Cleaning up laptop power optimizations..."
+    rpm-ostree kargs --delete="nvme.noacpi=1" --delete="rtc_cmos.use_acpi_alarm=1"
 else
     echo "Detected $CHASSIS, setting hostname to rosieroo"
     hostnamectl set-hostname rosieroo
