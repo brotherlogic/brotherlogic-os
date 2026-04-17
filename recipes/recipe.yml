@@ -84,7 +84,7 @@ modules:
     snippets:
       - "echo '--- Installing talosctl binary ---' && curl -Lo /usr/bin/talosctl https://github.com/siderolabs/talos/releases/latest/download/talosctl-linux-amd64 && chmod +x /usr/bin/talosctl"
       - "echo '--- Building devcontainer-manager binary ---' && rm -rf /tmp/devcontainer-manager && git clone https://github.com/brotherlogic/devcontainer-manager.git /tmp/devcontainer-manager && cd /tmp/devcontainer-manager && go build -v -o /usr/bin/devcontainer-manager main.go"
-      - "echo '--- Configuring devcontainer-manager service ---' && sed -e 's/\\\\|/|/g' -e 's|%PROJECT_DIR%|%h/devcontainer-manager|g' -e 's|%GO_CMD%|/usr/bin/go|g' /tmp/devcontainer-manager/service-file > /usr/lib/systemd/user/devcontainer-manager.service && systemctl --global enable devcontainer-manager.service && ls -l /usr/lib/systemd/user/devcontainer-manager.service"
+      - "echo '--- Configuring devcontainer-manager service ---' && sed -e 's/\\\\|/|/g' -e 's|%PROJECT_DIR%|%h/devcontainer-manager|g' -e 's|%GO_CMD%|/usr/bin/go|g' -e '/^\\\[Unit\\\]/a ConditionUser=!root' /tmp/devcontainer-manager/service-file > /usr/lib/systemd/user/devcontainer-manager.service && systemctl --global enable devcontainer-manager.service && ls -l /usr/lib/systemd/user/devcontainer-manager.service"
       - "mkdir -p /usr/share/backgrounds && curl -L 'https://fedoraproject.org/w/uploads/1/1c/F43-DAY_final_day_%28small%29.png' -o /usr/share/backgrounds/f43-day.png"
       - "mkdir -p /usr/share/fonts/jost && curl -L https://github.com/indestructible-type/Jost/releases/download/3.5/Jost.zip -o /tmp/jost.zip && unzip -o /tmp/jost.zip -d /usr/share/fonts/jost && fc-cache -f /usr/share/fonts/jost"
       - "npm install -g @google/gemini-cli"
