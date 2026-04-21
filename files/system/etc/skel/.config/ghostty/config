@@ -1,0 +1,28 @@
+# Ghostty Config - Classic Tron (1982) Theme
+background = 000000
+foreground = 00FFFF
+cursor-color = FFFF00
+selection-background = 0000FF
+selection-foreground = FFFFFF
+
+# Transparency / Blur (Hologram effect)
+background-opacity = 0.85
+background-blur-radius = 20
+
+# Classic Tron Palette
+palette = 0=#000000
+palette = 1=#FF0000
+palette = 2=#00FF00
+palette = 3=#FFFF00
+palette = 4=#0000FF
+palette = 5=#FF00FF
+palette = 6=#00FFFF
+palette = 7=#FFFFFF
+palette = 8=#555555
+palette = 9=#FF5555
+palette = 10=#55FF55
+palette = 11=#FFFF55
+palette = 12=#5555FF
+palette = 13=#FF55FF
+palette = 14=#55FFFF
+palette = 15=#FFFFFF
