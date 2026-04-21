@@ -39,6 +39,7 @@ modules:
         - npm
         - waybar
         - fontawesome-fonts
+        - bitstream-vera-sans-mono-fonts
         - unzip
         - rpi-imager
         - SwayNotificationCenter

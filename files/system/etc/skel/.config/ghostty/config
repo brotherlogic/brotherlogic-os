@@ -1,4 +1,7 @@
 # Ghostty Config - Classic Tron (1982) Theme
+font-family = "Bitstream Vera Sans Mono"
+font-size = 12
+
 background = 000000
 foreground = 00FFFF
 cursor-color = FFFF00
