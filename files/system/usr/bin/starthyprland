@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 
 # Tell this script to exit if there are any errors.
-# You should have this in every custom script, to ensure that your completed
-# builds actually ran successfully without any errors!
 set -oue pipefail
 
+# Sync configuration from /etc/skel if missing in home directory
+echo "Syncing configurations from /etc/skel..."
+cp -rn /etc/skel/. "$HOME/" 2>/dev/null || true
 
-default_conf="/usr/share/hyprland/hyprland.conf"
-
-Hyprland -c "$default_conf"
+# Prioritize local configuration
+if [ -f "$HOME/.config/hypr/hyprland.conf" ]; then
+    echo "Starting Hyprland with local config: $HOME/.config/hypr/hyprland.conf"
+    Hyprland -c "$HOME/.config/hypr/hyprland.conf"
+else
+    echo "Local config not found, falling back to system default"
+    default_conf="/usr/share/hyprland/hyprland.conf"
+    Hyprland -c "$default_conf"
+fi
