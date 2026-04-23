@@ -68,6 +68,12 @@ modules:
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
+  - type: kargs
+    args:
+      - rtc_cmos.use_acpi_alarm=1
+      - nvme.noacpi=1
+      - amdgpu.sg_display=0
+
   - type: rpm-ostree
     repos:
       -  antigravity.repo
