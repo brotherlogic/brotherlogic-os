@@ -10,6 +10,7 @@
 * {
   font-family: "Jost", "Font Awesome 6 Free", sans-serif;
   font-size: 14px;
+  font-feature-settings: "liga" 0, "dlig" 0, "calt" 0, "clig" 0, "rlig" 0;
 }
 
 .control-center {
