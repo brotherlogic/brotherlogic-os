@@ -69,7 +69,7 @@ modules:
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
   - type: kargs
-    args:
+    kargs:
       - rtc_cmos.use_acpi_alarm=1
       - nvme.noacpi=1
       - amdgpu.sg_display=0
