@@ -46,8 +46,6 @@ modules:
         - chezmoi
         - age
         - powertop
-        - hypridle
-        - hyprlock
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
