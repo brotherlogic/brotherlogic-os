@@ -19,3 +19,11 @@ This file tracks attempts made to solve recurring issues in the codebase.
         - `amdgpu.sg_display=0`
         - `amdgpu.dcdebugmask=0x10` (existing)
 - **Status**: Changes committed to branch `fix/wake-lockup`.
+
+## Issue: Hyprland Config Error (no_direct_scanout)
+
+### 2026-04-27
+- **Symptom**: Hyprland reports error: `misc:no_direct_scanout does not exist`.
+- **Diagnosis**: The `no_direct_scanout` option was removed in Hyprland v0.41.0.
+- **Attempted Fix**: Removed `no_direct_scanout = true` from `files/system/etc/skel/.config/hypr/hyprland.conf` and `files/system/usr/share/hyprland/hyprland.conf`.
+- **Status**: Changes committed to branch `fix/wake-lockup`.
