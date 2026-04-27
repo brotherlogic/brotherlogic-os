@@ -68,9 +68,6 @@ modules:
 
   - type: kargs
     kargs:
-      - rtc_cmos.use_acpi_alarm=1
-      - nvme.noacpi=1
-      - nvme_core.default_ps_max_latency_us=0
       - amdgpu.dcdebugmask=0x10
 
   - type: rpm-ostree
