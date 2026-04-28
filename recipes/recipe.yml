@@ -74,6 +74,9 @@ modules:
       - rtc_cmos.use_acpi_alarm=1
       - nvme_core.default_ps_max_latency_us=0
       - amdgpu.sg_display=0
+      - iommu=pt
+      - amdgpu.gpu_recovery=1
+      - pcie_aspm=off
 
   - type: rpm-ostree
     repos:
