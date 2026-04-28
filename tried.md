@@ -21,15 +21,18 @@ This file tracks attempts made to solve recurring issues in the codebase.
 - **Status**: Changes committed to branch `fix/wake-lockup`.
 
 ### 2026-04-27 (Latest)
-- **Symptom**: System still locking up, potentially related to display or NVMe stability.
+- **Symptom**: System still locking up, potentially related to display, NVMe, or I/O stability.
 - **Diagnosis**: 
     - PSR (Panel Self Refresh) might need more aggressive disabling (PSR-SU).
     - Adaptive Backlight Management (ABM) can cause flickering and hangs on AMD Frameworks.
     - `nvme.noacpi=1` might be counter-productive on newer BIOS versions.
+    - DMA remapping or PCIe power management might be causing hard freezes.
 - **Attempted Fix**:
     - Updated `amdgpu.dcdebugmask=0x110` (disables PSR and PSR-SU).
     - Added `amdgpu.abmlevel=0` (disables ABM).
-    - Removed `nvme.noacpi=1`.
+    - Added `iommu=pt` to improve DMA stability.
+    - Added `amdgpu.gpu_recovery=1` to allow GPU resets instead of hard freezes.
+    - Added `pcie_aspm=off` to rule out PCIe power management hangs.
 - **Status**: Applying changes.
 
 ## Issue: Hyprland Config Error (no_direct_scanout)
