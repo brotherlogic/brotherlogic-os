@@ -20,6 +20,13 @@ This file tracks attempts made to solve recurring issues in the codebase.
         - `amdgpu.dcdebugmask=0x10` (existing)
 - **Status**: Changes committed to branch `fix/wake-lockup`.
 
+### 2026-04-27 (Later)
+- **Symptom**: System still crashes and filesystem goes into read-only mode after resume from sleep.
+- **Diagnosis**: NVMe controller likely failing to resume from deep power states, causing the kernel to remount the filesystem as read-only.
+- **Attempted Fix**:
+    - Added `nvme_core.default_ps_max_latency_us=0` to `recipes/recipe.yml` to disable NVMe deep sleep states.
+- **Status**: Applying changes.
+
 ## Issue: Hyprland Config Error (no_direct_scanout)
 
 ### 2026-04-27

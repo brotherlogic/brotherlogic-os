@@ -72,6 +72,7 @@ modules:
       - modprobe.blacklist=ucsi_acpi
       - rtc_cmos.use_acpi_alarm=1
       - nvme.noacpi=1
+      - nvme_core.default_ps_max_latency_us=0
       - amdgpu.sg_display=0
 
   - type: rpm-ostree
