@@ -68,10 +68,10 @@ modules:
 
   - type: kargs
     kargs:
-      - amdgpu.dcdebugmask=0x10
+      - amdgpu.dcdebugmask=0x110
+      - amdgpu.abmlevel=0
       - modprobe.blacklist=ucsi_acpi
       - rtc_cmos.use_acpi_alarm=1
-      - nvme.noacpi=1
       - nvme_core.default_ps_max_latency_us=0
       - amdgpu.sg_display=0
 

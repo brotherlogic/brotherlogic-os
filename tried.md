@@ -20,11 +20,16 @@ This file tracks attempts made to solve recurring issues in the codebase.
         - `amdgpu.dcdebugmask=0x10` (existing)
 - **Status**: Changes committed to branch `fix/wake-lockup`.
 
-### 2026-04-27 (Later)
-- **Symptom**: System still crashes and filesystem goes into read-only mode after resume from sleep.
-- **Diagnosis**: NVMe controller likely failing to resume from deep power states, causing the kernel to remount the filesystem as read-only.
+### 2026-04-27 (Latest)
+- **Symptom**: System still locking up, potentially related to display or NVMe stability.
+- **Diagnosis**: 
+    - PSR (Panel Self Refresh) might need more aggressive disabling (PSR-SU).
+    - Adaptive Backlight Management (ABM) can cause flickering and hangs on AMD Frameworks.
+    - `nvme.noacpi=1` might be counter-productive on newer BIOS versions.
 - **Attempted Fix**:
-    - Added `nvme_core.default_ps_max_latency_us=0` to `recipes/recipe.yml` to disable NVMe deep sleep states.
+    - Updated `amdgpu.dcdebugmask=0x110` (disables PSR and PSR-SU).
+    - Added `amdgpu.abmlevel=0` (disables ABM).
+    - Removed `nvme.noacpi=1`.
 - **Status**: Applying changes.
 
 ## Issue: Hyprland Config Error (no_direct_scanout)
