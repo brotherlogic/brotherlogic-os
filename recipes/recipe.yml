@@ -48,6 +48,7 @@ modules:
         - chezmoi
         - age
         - powertop
+        - openssh-server
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -103,6 +104,7 @@ modules:
       - "npm install -g @google/gemini-cli"
       - "chmod +x /usr/bin/set-hostname.sh"
       - "systemctl enable set-hostname.service"
+      - "systemctl enable sshd.service"
 
   - type: files
     files:
