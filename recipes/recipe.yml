@@ -21,6 +21,7 @@ modules:
         - a-zhn/ghostty
         - solopasha/hyprland
         - erikreider/SwayNotificationCenter
+        - "@go-sig/golang-rawhide"
     install:
       packages:
         - micro
