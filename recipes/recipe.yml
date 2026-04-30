@@ -29,7 +29,6 @@ modules:
         - emacs
         - devpod
         - hyprland
-        - hyprland-qtutils
         - hypridle
         - hyprlock
         - swaybg
