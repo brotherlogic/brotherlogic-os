@@ -19,8 +19,9 @@ modules:
         - atim/starship
         - chronoscrat/devpod
         - a-zhn/ghostty
-        - solopasha/hyprland
+        - sdegler/hyprland
         - erikreider/SwayNotificationCenter
+        - "@go-sig/golang-rawhide"
     install:
       packages:
         - micro
@@ -28,7 +29,6 @@ modules:
         - emacs
         - devpod
         - hyprland
-        - hyprland-qtutils
         - hypridle
         - hyprlock
         - swaybg
