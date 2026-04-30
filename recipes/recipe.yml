@@ -19,7 +19,7 @@ modules:
         - atim/starship
         - chronoscrat/devpod
         - a-zhn/ghostty
-        - solopasha/hyprland
+        - sdegler/hyprland
         - erikreider/SwayNotificationCenter
         - "@go-sig/golang-rawhide"
     install:
