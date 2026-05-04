@@ -7,7 +7,8 @@
         "hyprland/workspaces"
     ],
     "modules-center": [
-        "clock"
+        "clock",
+        "custom/gcal"
     ],
     "modules-right": [
         "network",
@@ -23,6 +24,12 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}",
         "format": " {:%H:%M} "
+    },
+    "custom/gcal": {
+        "format": "{}",
+        "exec": "gcal-status",
+        "return-type": "json",
+        "interval": 60
     },
     "network": {
         "format-wifi": " {essid} ({signalStrength}%)",
