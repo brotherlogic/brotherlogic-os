@@ -3,9 +3,9 @@
 # Tell this script to exit if there are any errors.
 set -oue pipefail
 
-# Sync configuration from /etc/skel if missing in home directory
+# Sync configuration from /etc/skel to home directory
 echo "Syncing configurations from /etc/skel..."
-cp -rn /etc/skel/. "$HOME/" 2>/dev/null || true
+cp -rf /etc/skel/. "$HOME/" 2>/dev/null || true
 
 # Prioritize local configuration
 if [ -f "$HOME/.config/hypr/hyprland.conf" ]; then
