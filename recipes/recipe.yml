@@ -89,11 +89,6 @@ modules:
       - antigravity
       - code
 
-  - type: kernel-arguments
-    arguments:
-      - amdgpu.gpu_recovery=1
-      - amdgpu.sg_display=0
-
   - type: files
     files:
       - source: system
