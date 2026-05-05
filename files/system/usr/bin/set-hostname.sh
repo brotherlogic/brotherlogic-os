@@ -17,5 +17,4 @@ else
     # nvme.noacpi=1: Fixes high battery drain on WD SN770 SSD
     echo "Applying laptop power optimizations..."
     rpm-ostree kargs --append-if-missing="rtc_cmos.use_acpi_alarm=1" --append-if-missing="nvme.noacpi=1"
-=
 fi
