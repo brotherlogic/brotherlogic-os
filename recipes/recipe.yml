@@ -49,6 +49,7 @@ modules:
         - age
         - powertop
         - openssh-server
+        - libxcrypt-compat
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -85,9 +86,11 @@ modules:
     repos:
       -  antigravity.repo
       -  vscode.repo
+      -  google-cloud-cli.repo
     install:
       - antigravity
       - code
+      - google-cloud-cli
 
   - type: files
     files:
