@@ -37,19 +37,20 @@ This file tracks attempts made to solve recurring issues in the codebase.
 
 ## Issue: Locking Behavior (Half Screen / Unresponsive)
 
-### 2026-05-08
-- **Symptom**: After opening the lid, the screen shows half lock screen and half normal screen. Mouse and keyboard are unresponsive.
+### 2026-05-11 (Latest)
+- **Symptom**: OS still locks in an "intermediary state" (likely half-rendered lock screen) when opening the lid, requiring a reboot.
 - **Diagnosis**: 
-    - Likely a race condition between `hyprlock` starting and the system suspending.
-    - Monitor resolution/scaling mismatch during the resume transition might cause the "half screen" rendering.
-    - `hyprlock` might be waiting for resources (like the background image) during the transition, leading to a hang or partial render.
+    - Previous `sleep 1` might not be enough for `hyprlock` to fully initialize and render on some hardware/driver states.
+    - `eDP-1` explicit targeting in `hyprlock` might fail if the monitor is not immediately available on resume.
+    - Variable Frame Rate (VFR) might be causing rendering glitches during the suspend/resume transition.
 - **Attempted Fix**:
-    - Enabled `immediate_render = true` in `hyprlock.conf` to force immediate widget drawing.
-    - Enabled `no_fade_in = true` in `hyprlock.conf` to avoid animation-related race conditions.
-    - Explicitly set `monitor = eDP-1` in `hyprlock.conf` to ensure correct monitor targeting.
-    - Added `sleep 1` to `before_sleep_cmd` in `hypridle.conf` to give `hyprlock` time to initialize before the system suspends.
-    - Ensured `hypridle` is enabled in system-wide Hyprland config autostart.
-- **Status**: Changes applied.
+    - Increased `sleep` to `2` seconds in `hypridle.conf`'s `before_sleep_cmd`.
+    - Removed explicit `monitor = eDP-1` from `hyprlock.conf` to use generic targeting.
+    - Added `ignore_empty_input = true` to `hyprlock.conf` for better input handling on resume.
+    - Disabled `vfr` in `hyprland.conf` to improve compositor stability.
+    - Added `LidSwitchIgnoreInhibited=no` to `logind.conf` to respect inhibits, potentially avoiding state conflicts.
+- **Status**: Applying changes.
+
 
 ## Issue: Hyprland Config Error (no_direct_scanout)
 
