@@ -51,6 +51,21 @@ This file tracks attempts made to solve recurring issues in the codebase.
     - Added `LidSwitchIgnoreInhibited=no` to `logind.conf` to respect inhibits, potentially avoiding state conflicts.
 - **Status**: Applying changes.
 
+## Issue: Read-Only Filesystem After Wake
+
+### 2026-05-11 (Latest)
+- **Symptom**: Filesystem becomes read-only after waking from sleep, rendering the system unusable.
+- **Diagnosis**: 
+    - Common issue with Western Digital SN770/SN850 NVMe drives on AMD platforms.
+    - NVMe controller or drive may be timing out or failing to re-initialize during resume.
+    - Previous attempts used `pcie_aspm=off` and runtime `kargs` which may have been insufficient or applied too late.
+- **Attempted Fix (New Strategy)**:
+    - **New**: Added `nvme_core.admin_timeout=240` to specifically prevent the kernel from dropping the drive to RO during slow wake-ups.
+    - **New**: Switched from `pcie_aspm=off` to `pcie_aspm.policy=performance` to allow cleaner PCIe state transitions while maintaining high power delivery.
+    - **Consolidated**: Moved all arguments (`nvme.noacpi=1`, `mem_sleep_default=s2idle`, etc.) into `recipes/recipe.yml`. This ensures they are baked into the deployment and active before the OS even starts, rather than being applied by a script that might fail if the drive is already problematic.
+    - Removed redundant `rpm-ostree kargs` calls from `files/system/usr/bin/set-hostname.sh`.
+- **Status**: Applying changes.
+
 
 ## Issue: Hyprland Config Error (no_direct_scanout)
 
