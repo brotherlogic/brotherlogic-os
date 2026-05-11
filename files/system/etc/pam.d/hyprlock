@@ -1,0 +1,5 @@
+# /etc/pam.d/hyprlock
+auth       include      system-auth
+account    include      system-auth
+password   include      system-auth
+session    include      system-auth
