@@ -83,7 +83,7 @@ modules:
       - amdgpu.sg_display=0
       - iommu=pt
       - amdgpu.gpu_recovery=1
-      - pcie_aspm.policy=performance
+      - pcie_aspm=off
 
   - type: rpm-ostree
     repos:
