@@ -75,6 +75,20 @@ This file tracks attempts made to solve recurring issues in the codebase.
     - Updated `start-hyprland` to use `exec` and set Wayland environment variables.
     - Enabled `before_sleep_cmd` in `hypridle.conf`.
     - Added `amdgpu.runpm=0` to `kargs`.
+- **Status**: Failed - Laptop still freezes on wake.
+
+### 2026-05-13 (Latest)
+- **Symptom**: Laptop still freezes on wake from s2idle.
+- **Diagnosis**: 
+    - `amdgpu.runpm=0` might be interfering with s2idle transitions.
+    - `hyprlock`'s `immediate_render` and `blur` might be causing rendering hangs during the resume process.
+    - `hypridle`'s `after_sleep_cmd` might be racing with the GPU resume.
+- **Attempted Fix**:
+    - Removed `amdgpu.runpm=0` from `kargs`.
+    - Disabled `immediate_render` and `blur_passes` in `hyprlock.conf`.
+    - Set `fade_on_empty = false` in `hyprlock.conf` to ensure the input field is always visible.
+    - Removed `after_sleep_cmd` from `hypridle.conf`.
+    - Added `ignore_dbus_inhibit = false` to `hypridle.conf`.
 - **Status**: Applying changes.
 
 
