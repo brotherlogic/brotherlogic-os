@@ -53,7 +53,7 @@ This file tracks attempts made to solve recurring issues in the codebase.
 
 ## Issue: Read-Only Filesystem / Bus Error After Wake
 
-### 2026-05-11 (Latest)
+### 2026-05-11
 - **Symptom**: Filesystem becomes read-only or processes encounter "Bus Error" (SIGBUS) after waking from sleep.
 - **Diagnosis**: 
     - Common issue with Western Digital SN770/SN850 NVMe drives on AMD platforms (e.g., Framework 13 AMD).
@@ -62,6 +62,19 @@ This file tracks attempts made to solve recurring issues in the codebase.
 - **Attempted Fix**:
     - **Reverted**: Changed `pcie_aspm.policy=performance` back to `pcie_aspm=off`. While less power-efficient, this is the most reliable way to ensure the PCIe link remains stable across sleep/wake cycles for problematic drives.
     - **Kept**: Maintained `nvme_core.default_ps_max_latency_us=0`, `nvme.noacpi=1`, and `nvme_core.admin_timeout=240` as layered defenses against controller timeouts.
+- **Status**: Applying changes.
+
+### 2026-05-12 (Latest)
+- **Symptom**: Continued lockups and Hyprland startup warning.
+- **Diagnosis**: 
+    - Hyprland expects a wrapper named `start-hyprland`.
+    - `before_sleep_cmd` in `hypridle.conf` was commented out, potentially leading to race conditions during suspend.
+    - `amdgpu.runpm=0` might be needed for GPU stability on some AMD laptops.
+- **Attempted Fix**:
+    - Renamed `starthyprland` to `start-hyprland` and updated `.desktop` entry.
+    - Updated `start-hyprland` to use `exec` and set Wayland environment variables.
+    - Enabled `before_sleep_cmd` in `hypridle.conf`.
+    - Added `amdgpu.runpm=0` to `kargs`.
 - **Status**: Applying changes.
 
 
