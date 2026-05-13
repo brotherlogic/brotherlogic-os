@@ -89,6 +89,22 @@ This file tracks attempts made to solve recurring issues in the codebase.
     - Set `fade_on_empty = false` in `hyprlock.conf` to ensure the input field is always visible.
     - Removed `after_sleep_cmd` from `hypridle.conf`.
     - Added `ignore_dbus_inhibit = false` to `hypridle.conf`.
+- **Status**: Failed - "seemed better" but encountered IO failure (errno=-5) on NVMe after wake, leading to unresponsive lock screen.
+
+## Issue: NVMe IO Failure (errno=-5) / Unresponsive Lock Screen after Wake
+
+### 2026-05-13 (Latest)
+- **Symptom**: `nvme0n1p3 state A) in cleanup errno=-5 IO failure` on wake. Lock screen is visible but password entry does nothing.
+- **Diagnosis**: 
+    - The NVMe drive (likely WD SN770) is failing to resume correctly, causing the Btrfs filesystem to abort transactions and go read-only.
+    - `hyprlock` authentication fails because PAM cannot access auth files on the read-only/unresponsive filesystem.
+    - `nvme.noacpi=1` might be counter-productive on newer AMD platforms where ACPI is needed for resume.
+    - PCIe port power management might still be interfering despite `pcie_aspm=off`.
+- **Attempted Fix**:
+    - Removed `nvme.noacpi=1` to allow ACPI to assist in NVMe resume.
+    - Added `pcie_port_pm=off` to disable power management for PCIe ports specifically.
+    - Added `nvme_core.max_retries=10` to allow more attempts for the drive to respond.
+    - Kept `nvme_core.default_ps_max_latency_us=0` as it is the most aggressive way to disable NVMe power states.
 - **Status**: Applying changes.
 
 
