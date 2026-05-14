@@ -94,17 +94,16 @@ This file tracks attempts made to solve recurring issues in the codebase.
 ## Issue: NVMe IO Failure (errno=-5) / Unresponsive Lock Screen after Wake
 
 ### 2026-05-13 (Latest)
-- **Symptom**: `nvme0n1p3 state A) in cleanup errno=-5 IO failure` on wake. Lock screen is visible but password entry does nothing.
+- **Symptom**: `nvme0n1p3 state A) in cleanup errno=-5 IO failure` on wake. Lock screen is visible but password entry does nothing. User reports "failed to execute shutdown binary".
 - **Diagnosis**: 
     - The NVMe drive (likely WD SN770) is failing to resume correctly, causing the Btrfs filesystem to abort transactions and go read-only.
     - `hyprlock` authentication fails because PAM cannot access auth files on the read-only/unresponsive filesystem.
-    - `nvme.noacpi=1` might be counter-productive on newer AMD platforms where ACPI is needed for resume.
-    - PCIe port power management might still be interfering despite `pcie_aspm=off`.
+    - "failed to execute shutdown binary" is likely a symptom of the read-only filesystem where the `shutdown` (systemctl) binary cannot be executed or its dependencies cannot be loaded.
+    - Re-evaluating `nvme.noacpi=1`: While controversial, it remains a key fix for some SN770/AMD combinations.
+    - GPU ASPM might also be contributing to the wake hang.
 - **Attempted Fix**:
-    - Removed `nvme.noacpi=1` to allow ACPI to assist in NVMe resume.
-    - Added `pcie_port_pm=off` to disable power management for PCIe ports specifically.
-    - Added `nvme_core.max_retries=10` to allow more attempts for the drive to respond.
-    - Kept `nvme_core.default_ps_max_latency_us=0` as it is the most aggressive way to disable NVMe power states.
+    - Re-added `nvme.noacpi=1` to kernel arguments.
+    - Added `amdgpu.aspm=0` to disable GPU ASPM.
 - **Status**: Applying changes.
 
 
