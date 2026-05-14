@@ -85,6 +85,8 @@ modules:
       - pcie_aspm=off
       - pcie_port_pm=off
       - nvme_core.max_retries=10
+      - nvme.noacpi=1
+      - amdgpu.aspm=0
 
   - type: rpm-ostree
     repos:
