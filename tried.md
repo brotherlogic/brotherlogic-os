@@ -93,18 +93,19 @@ This file tracks attempts made to solve recurring issues in the codebase.
 
 ## Issue: NVMe IO Failure (errno=-5) / Unresponsive Lock Screen after Wake
 
-### 2026-05-13 (Latest)
-- **Symptom**: `nvme0n1p3 state A) in cleanup errno=-5 IO failure` on wake. Lock screen is visible but password entry does nothing. User reports "failed to execute shutdown binary".
+### 2026-05-15 (Latest)
+- **Symptom**: Laptop still locking up, specifically on wake from s2idle.
 - **Diagnosis**: 
-    - The NVMe drive (likely WD SN770) is failing to resume correctly, causing the Btrfs filesystem to abort transactions and go read-only.
-    - `hyprlock` authentication fails because PAM cannot access auth files on the read-only/unresponsive filesystem.
-    - "failed to execute shutdown binary" is likely a symptom of the read-only filesystem where the `shutdown` (systemctl) binary cannot be executed or its dependencies cannot be loaded.
-    - Re-evaluating `nvme.noacpi=1`: While controversial, it remains a key fix for some SN770/AMD combinations.
-    - GPU ASPM might also be contributing to the wake hang.
+    - `journalctl` shows persistent `ucsi_acpi` errors: `GET_CABLE_PROPERTY failed (-5)`.
+    - `boltd` shows Thunderbolt probe timeouts.
+    - Most importantly, `rpm-ostree kargs` and `/proc/cmdline` reveal that many critical kargs defined in `recipe.yml` (e.g., `nvme_core.default_ps_max_latency_us=0`, `pcie_aspm=off`, `amdgpu.aspm=0`) are NOT being applied to the running system.
+    - This explains why previous "fixes" failed: the drive (WD SN770) is still allowed to enter deep power states it cannot wake from.
 - **Attempted Fix**:
-    - Re-added `nvme.noacpi=1` to kernel arguments.
-    - Added `amdgpu.aspm=0` to disable GPU ASPM.
+    - Added `files/system/etc/modprobe.d/ucsi_acpi-blacklist.conf` to ensure the module is blacklisted regardless of karg application.
+    - Cleaned up `recipes/recipe.yml` (removed duplicate block).
+    - **Recommendation**: User must ensure kargs are applied. If `bootc` or `rpm-ostree` are not syncing them from the image, they should be added manually via `sudo rpm-ostree kargs --append="..."`.
 - **Status**: Applying changes.
+
 
 
 ## Issue: Hyprland Config Error (no_direct_scanout)

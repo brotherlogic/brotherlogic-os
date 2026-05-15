@@ -118,11 +118,7 @@ modules:
       - "systemctl enable set-hostname.service"
       - "systemctl enable sshd.service"
 
-  - type: files
-    files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
-
   - type: script
     snippets:
       - "dconf update"
+
