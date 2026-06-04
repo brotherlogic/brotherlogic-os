@@ -90,13 +90,12 @@ modules:
 
   - type: rpm-ostree
     repos:
-      -  antigravity.repo
       -  vscode.repo
       -  google-cloud-cli.repo
     install:
-      - antigravity
       - code
       - google-cloud-cli
+
 
   - type: files
     files:
@@ -112,6 +111,7 @@ modules:
       - "echo '--- Configuring devcontainer-manager service ---' && sed -e 's/\\\\|/|/g' -e 's|%PROJECT_DIR%|%h/devcontainer-manager|g' -e 's|%GO_CMD%|/usr/bin/go|g' -e '/^\\[Unit\\]/a ConditionUser=!root' /tmp/devcontainer-manager/service-file > /usr/lib/systemd/user/devcontainer-manager.service && systemctl --global enable devcontainer-manager.service && ls -l /usr/lib/systemd/user/devcontainer-manager.service"
       - "mkdir -p /usr/share/backgrounds && curl -L 'https://fedoraproject.org/w/uploads/1/1c/F43-DAY_final_day_%28small%29.png' -o /usr/share/backgrounds/f43-day.png"
       - "mkdir -p /usr/share/fonts/jost && curl -L https://github.com/indestructible-type/Jost/releases/download/3.5/Jost.zip -o /tmp/jost.zip && unzip -o /tmp/jost.zip -d /usr/share/fonts/jost && fc-cache -f /usr/share/fonts/jost"
+      - "echo '--- Installing Antigravity 2.1.0 ---' && mkdir -p /tmp/antigravity && curl -sL https://storage.googleapis.com/antigravity-public/antigravity-hub/2.1.0-6066040229199872/linux-x64/Antigravity.tar.gz | tar -xz -C /tmp/antigravity && mkdir -p /usr/share/antigravity && cp -r /tmp/antigravity/Antigravity-x64/* /usr/share/antigravity/ && chmod 4755 /usr/share/antigravity/chrome-sandbox && ln -sf /usr/share/antigravity/antigravity /usr/bin/antigravity && rm -rf /tmp/antigravity"
       - "npm install -g @google/gemini-cli"
       - "chmod +x /usr/bin/set-hostname.sh"
       - "chmod +x /usr/bin/setup-gws.sh"
