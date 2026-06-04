@@ -15,6 +15,15 @@ export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_DESKTOP=Hyprland
 export XDG_SESSION_TYPE=wayland
 
+# Adjust waybar config for desktop
+CHASSIS=$(hostnamectl chassis)
+if [ "$CHASSIS" != "laptop" ]; then
+    if [ -f "$HOME/.config/waybar/config.desktop" ]; then
+        echo "Detected non-laptop ($CHASSIS), applying desktop waybar config"
+        mv -f "$HOME/.config/waybar/config.desktop" "$HOME/.config/waybar/config"
+    fi
+fi
+
 # Prioritize local configuration
 if [ -f "$HOME/.config/hypr/hyprland.conf" ]; then
     echo "Starting Hyprland with local config: $HOME/.config/hypr/hyprland.conf"
