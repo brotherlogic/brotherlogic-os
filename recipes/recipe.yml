@@ -35,6 +35,7 @@ modules:
         - ghostty
         - gh
         - cdparanoia
+        - flac
         - docker
         - golang
         - nodejs
