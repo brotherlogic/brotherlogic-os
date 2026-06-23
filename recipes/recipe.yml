@@ -51,6 +51,9 @@ modules:
         - powertop
         - openssh-server
         - libxcrypt-compat
+        - virt-manager
+        - libvirt
+        - qemu-kvm
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -118,6 +121,7 @@ modules:
       - "chmod +x /usr/bin/setup-gws.sh"
       - "systemctl enable set-hostname.service"
       - "systemctl enable sshd.service"
+      - "systemctl enable libvirtd.service"
 
   - type: script
     snippets:
