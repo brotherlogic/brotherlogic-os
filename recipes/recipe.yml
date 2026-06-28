@@ -24,6 +24,7 @@ modules:
         - "@go-sig/golang-rawhide"
     install:
       packages:
+        - ansible
         - micro
         - starship
         - emacs
