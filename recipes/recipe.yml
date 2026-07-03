@@ -55,6 +55,7 @@ modules:
         - virt-manager
         - libvirt
         - qemu-kvm
+        - virt-install
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
