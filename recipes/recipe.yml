@@ -56,6 +56,8 @@ modules:
         - libvirt
         - qemu-kvm
         - virt-install
+        - prometheus-node-exporter
+        - lm_sensors
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -124,6 +126,7 @@ modules:
       - "systemctl enable set-hostname.service"
       - "systemctl enable sshd.service"
       - "systemctl enable libvirtd.service"
+      - "systemctl enable prometheus-node-exporter.service"
 
   - type: script
     snippets:
