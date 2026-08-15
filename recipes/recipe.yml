@@ -58,6 +58,7 @@ modules:
         - virt-install
         - prometheus-node-exporter
         - lm_sensors
+        - thonny
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
