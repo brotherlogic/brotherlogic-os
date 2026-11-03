@@ -5,3 +5,6 @@ font-size = 12
 # Transparency / Blur (Hologram effect)
 background-opacity = 0.85
 background-blur-radius = 20
+
+# Direct U+FFFA (and adjacent annotation delimiters) to a font that renders them empty
+font-codepoint-map = U+FFF9-U+FFFB=""
