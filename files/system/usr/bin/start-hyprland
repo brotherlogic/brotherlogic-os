@@ -6,6 +6,7 @@ set -oue pipefail
 # Sync configuration from /etc/skel to home directory
 echo "Syncing configurations from /etc/skel..."
 cp -rf /etc/skel/. "$HOME/" 2>/dev/null || true
+rm -f "$HOME/.config/hypr/hyprland.conf" 2>/dev/null || true
 
 # Set environment variables for better compatibility
 export MOZ_ENABLE_WAYLAND=1
@@ -25,11 +26,11 @@ if [ "$CHASSIS" != "laptop" ]; then
 fi
 
 # Prioritize local configuration
-if [ -f "$HOME/.config/hypr/hyprland.conf" ]; then
-    echo "Starting Hyprland with local config: $HOME/.config/hypr/hyprland.conf"
-    exec Hyprland -c "$HOME/.config/hypr/hyprland.conf"
+if [ -f "$HOME/.config/hypr/hyprland.lua" ]; then
+    echo "Starting Hyprland with local config: $HOME/.config/hypr/hyprland.lua"
+    exec Hyprland -c "$HOME/.config/hypr/hyprland.lua"
 else
     echo "Local config not found, falling back to system default"
-    default_conf="/usr/share/hyprland/hyprland.conf"
+    default_conf="/usr/share/hypr/hyprland.lua"
     exec Hyprland -c "$default_conf"
 fi
