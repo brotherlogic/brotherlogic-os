@@ -42,7 +42,8 @@ modules:
         - nodejs
         - npm
         - waybar
-        - fontawesome-fonts
+        - fontawesome-6-free-fonts
+        - fontawesome-6-brands-fonts
         - bitstream-vera-sans-mono-fonts
         - unzip
         - rpi-imager
