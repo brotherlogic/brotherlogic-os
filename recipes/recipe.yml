@@ -130,7 +130,7 @@ modules:
       - "chmod +x /usr/bin/setup-gws.sh"
       - "systemctl enable set-hostname.service"
       - "systemctl enable sshd.service"
-      - "systemctl enable libvirtd.service"
+      - "systemctl enable virtqemud.socket virtnetworkd.socket virtstoraged.socket virtnodedevd.socket"
       - "systemctl enable prometheus-node-exporter.service"
 
   - type: script
