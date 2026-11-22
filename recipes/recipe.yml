@@ -57,6 +57,11 @@ modules:
         - libvirt
         - qemu-kvm
         - virt-install
+        - swtpm
+        - swtpm-tools
+        - edk2-ovmf
+        - libvirt-daemon-config-network
+        - usbutils
         - prometheus-node-exporter
         - lm_sensors
         - thonny
